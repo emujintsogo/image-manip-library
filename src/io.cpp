@@ -47,7 +47,7 @@ Image load_image(const std::string& filepath) {
 
     Image image(image_width, image_height);
 
-    // Copy the RGB data into Image representation.
+    // Copy the RGB data into Image representation
     for (std::size_t y = 0; y < image_height; y++) {
         for (std::size_t x = 0; x < image_width; x++) {
             const std::size_t index =
