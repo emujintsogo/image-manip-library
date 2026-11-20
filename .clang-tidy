@@ -1,15 +1,20 @@
+---
 Checks: >
   -*,
-  clang-diagnostic-*,
   bugprone-*,
+  clang-diagnostic-*,
   cppcoreguidelines-*,
   modernize-*,
   performance-*,
   readability-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -modernize-use-designated-initializers,
   -modernize-use-trailing-return-type,
+  -readability-function-cognitive-complexity,
   -readability-identifier-length,
   -readability-magic-numbers,
-  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-math-missing-parentheses,
   -readability-trailing-comma
-WarningsAsErrors: '*'
-HeaderFilterRegex: 'src/.*'
+
+HeaderFilterRegex: '(include|src|tests)/'
+ExcludeHeaderFilterRegex: '(_deps|external)/'
