@@ -54,3 +54,7 @@ Run all tests:
 cd build
 ctest --output-on-failure
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for branch, pull request, commit, code style, and testing conventions.
