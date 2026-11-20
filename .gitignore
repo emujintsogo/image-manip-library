@@ -141,6 +141,6 @@ Testing/
 .cache/
 
 # Test images
-# examples/output.jpg
-# output*
->>>>>>> a33d474 (Deleted output image)
+examples/output.jpg
+examples/output/*
+output*
