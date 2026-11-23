@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.20)
 
 project(image-manip LANGUAGES CXX)
@@ -26,9 +25,12 @@ endif()
 # Build the image library
 add_library(image-manip
     src/image.cpp
+    src/io.cpp
 )
 
 target_include_directories(image-manip PUBLIC include)
+# Third-party headers (stb) are marked SYSTEM so our strict warnings don't fire on them
+target_include_directories(image-manip SYSTEM PRIVATE external)
 target_link_libraries(image-manip PRIVATE image-manip-warnings)
 
 # Download and configure GoogleTest
@@ -54,54 +56,12 @@ target_link_libraries(test_image
 
 include(GoogleTest)
 gtest_discover_tests(test_image)
-=======
-cmake_minimum_required(VERSION 3.20)
 
-project(image-manip LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Build the image library
-add_library(image-manip
-    src/image.cpp
-    src/io.cpp
-)
-
-target_include_directories(image-manip 
-    PUBLIC include
-    PRIVATE external
-)
-
-# GoogleTest
-include(FetchContent)
-
-FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/refs/tags/v1.17.0.zip
-)
-
-FetchContent_MakeAvailable(googletest)
-
-# Build unit tests
-enable_testing()
-
-add_executable(test_image
-    tests/test_image.cpp
-)
-
-target_link_libraries(test_image
-    PRIVATE image-manip GTest::gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(test_image)
-
+# Build the I/O demo
 add_executable(io_demo
     tests/io_demo.cpp
 )
 
 target_link_libraries(io_demo
-    PRIVATE image-manip
+    PRIVATE image-manip image-manip-warnings
 )
->>>>>>> 55edb5a (Add stb_image headers and I/O demo)
